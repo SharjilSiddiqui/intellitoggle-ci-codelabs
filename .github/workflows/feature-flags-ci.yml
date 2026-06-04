@@ -1,0 +1,33 @@
+name: Feature Flag CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    env:
+      INTELLITOGGLE_CLIENT_ID: ${{ secrets.INTELLITOGGLE_CLIENT_ID }}
+      INTELLITOGGLE_CLIENT_SECRET: ${{ secrets.INTELLITOGGLE_CLIENT_SECRET }}
+      INTELLITOGGLE_TENANT_ID: ${{ secrets.INTELLITOGGLE_TENANT_ID }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install Dependencies
+        run: dart pub get
+
+      - name: Static Analysis
+        run: dart analyze
+
+      - name: Run Tests
+        run: dart test
+
+      - name: Validate Feature Flags
+        run: dart run

@@ -1,0 +1,17 @@
+name: intellitoggle_ci_codelab
+description: A sample command-line application.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.12.1
+
+# Add regular dependencies here.
+dependencies:
+  openfeature_dart_server_sdk: ^0.0.22
+  openfeature_provider_intellitoggle: ^0.0.9
+  path: ^1.9.0
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.31.1
